@@ -55,12 +55,14 @@ public class BaiduLocation extends CordovaPlugin {
 	@Override
 	public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) {
 		setCallbackContext(callbackContext);
+
 		if (GET_ACTION.equals(action)) {
 			cordova.getActivity().runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
+                    key = args.getString(0);
 					locationClient = new LocationClient(cordova.getActivity());
-					locationClient.setAK("BfkPvjDGHC0ATZhIr6wxnHh9");//设置百度的ak
+					locationClient.setAK(key);//设置百度的ak
 					myListener = new MyLocationListener();
 					locationClient.registerLocationListener(myListener);
 					LocationClientOption option = new LocationClientOption();

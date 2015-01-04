@@ -1,5 +1,5 @@
 window.locationService = {
-	execute: function(action, successCallback, errorCallback) {
+	execute: function(key, action, successCallback, errorCallback) {
 		cordova.exec(    
 			function(pos) {
 				var errcode = pos.code;
@@ -17,11 +17,11 @@ window.locationService = {
 			function(err){},
 			"BaiduLocation",
 			action,
-			[]
+			[key]
 		)
 	},
-	getCurrentPosition: function(successCallback, errorCallback) {
-		this.execute("getCurrentPosition", successCallback, errorCallback);
+	getCurrentPosition: function(key, successCallback, errorCallback) {
+		this.execute(key, "getCurrentPosition", successCallback, errorCallback);
 	},
 	stop: function(action, successCallback, errorCallback) {
 		this.execute("stop", successCallback, errorCallback);

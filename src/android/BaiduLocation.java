@@ -53,8 +53,7 @@ public class BaiduLocation extends CordovaPlugin {
 	}
 
 	@Override
-	public boolean execute(String action, JSONArray args,
-			final CallbackContext callbackContext) {
+	public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) {
 		setCallbackContext(callbackContext);
 		if (GET_ACTION.equals(action)) {
 			cordova.getActivity().runOnUiThread(new Runnable() {
@@ -83,8 +82,7 @@ public class BaiduLocation extends CordovaPlugin {
 			callbackContext.success(200);
 			return true;
 		} else {
-			callbackContext
-					.error(PluginResult.Status.INVALID_ACTION.toString());
+			callbackContext.error(PluginResult.Status.INVALID_ACTION.toString());
 		}
 
 		while (result == false) {

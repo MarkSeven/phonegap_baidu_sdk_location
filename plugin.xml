@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
  
-<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="com.spout.phonegap.plugins.baidulocation" version="0.1.0">
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="com.eleme.phonegap.plugins.baidulocation" version="0.1.0">
     <name>BaiduLocation</name>
     <description>Baidu Location Plugin for Phonegap</description>
     <license>MIT</license>
@@ -14,7 +14,7 @@
  
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="BaiduLocation">
-                <param name="android-package" value="com.spout.phonegap.plugins.baidulocation.BaiduLocation"/>
+                <param name="android-package" value="com.eleme.phonegap.plugins.baidulocation.BaiduLocation"/>
             </feature>
         </config-file> 
         
@@ -35,7 +35,7 @@
             <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"></service>
         </config-file>
         
-        <source-file src="src/android/BaiduLocation.java" target-dir="src/com/spout/phonegap/plugins/baidulocation" />   
+        <source-file src="src/android/BaiduLocation.java" target-dir="src/com/eleme/phonegap/plugins/baidulocation" />   
         <source-file src="src/android/locSDK_4.0.jar" target-dir="libs" framework="true"/>      
         <source-file src="src/android/liblocSDK4.so" target-dir="libs/armeabi" framework="true"/>   
     </platform>         

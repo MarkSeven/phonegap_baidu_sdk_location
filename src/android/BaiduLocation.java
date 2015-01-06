@@ -1,4 +1,4 @@
-package com.spout.phonegap.plugins.baidulocation;
+package com.eleme.phonegap.plugins.baidulocation;
 
 
 import java.util.HashMap;
@@ -25,6 +25,7 @@ public class BaiduLocation extends CordovaPlugin {
 
     private static final String GET_ACTION = "getCurrentPosition";
     private static final String STOP_ACTION = "stop";
+    private static final key = null;
 
     public LocationClient locationClient = null;
     public BDLocationListener myListener = null;

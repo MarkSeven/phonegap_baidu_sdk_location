@@ -1,4 +1,4 @@
-window.locationService = {
+var locationService = {
 	execute: function(key, action, successCallback, errorCallback) {
 		cordova.exec(    
 			function(pos) {
@@ -26,5 +26,13 @@ window.locationService = {
 	stop: function(action, successCallback, errorCallback) {
 		this.execute("stop", successCallback, errorCallback);
 	}
+}
+
+if (!window.plugins) {
+    window.plugins = {};
+}
+
+if (!window.plugins.locationService) {
+    window.plugins.locationService = locationService;
 }
 module.exports = locationService;

@@ -17,7 +17,7 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-
+import com.baidu.location.LocationClientOption.LocationMode;
 
 
 
@@ -68,13 +68,13 @@ public class BaiduLocation extends CordovaPlugin {
                     try {
                         // String key = args.getString(0);
                         locationClient = new LocationClient(cordova.getActivity());  //声明Location
-                        // locationClient.setAK(key);//设置百度的ak
+                        // locationClient.setAK(key);//设置百度的ak, this is ok in v4.0
                         myListener = new MyLocationListener();
                         locationClient.registerLocationListener(myListener);  //注册监听函数
 
                         LocationClientOption option = new LocationClientOption();
                         option.setLocationMode(LocationMode.Hight_Accuracy);//设置定位模式
-                        option.setCoorType("bd09ll");//返回的定位结果是百度经纬度,默认值gcj02
+                        // option.setCoorType("bd09ll");//返回的定位结果是百度经纬度,默认值gcj02
                         option.setScanSpan(5000);//设置发起定位请求的间隔时间为5000ms
                         option.setIsNeedAddress(true);//返回的定位结果包含地址信息
                         option.setAddrType("all");

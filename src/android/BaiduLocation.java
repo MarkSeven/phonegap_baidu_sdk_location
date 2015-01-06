@@ -25,7 +25,6 @@ public class BaiduLocation extends CordovaPlugin {
 
     private static final String GET_ACTION = "getCurrentPosition";
     private static final String STOP_ACTION = "stop";
-    private static final key = null;
 
     public LocationClient locationClient = null;
     public BDLocationListener myListener = null;
@@ -58,27 +57,31 @@ public class BaiduLocation extends CordovaPlugin {
     }
 
     @Override
-    public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) {
+    public boolean execute(String action, final JSONArray args, final CallbackContext callbackContext) {
         setCallbackContext(callbackContext);
 
         if (GET_ACTION.equals(action)) {
             cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    key = args.getString(0);
-                    locationClient = new LocationClient(cordova.getActivity());
-                    locationClient.setAK(key);//设置百度的ak
-                    myListener = new MyLocationListener();
-                    locationClient.registerLocationListener(myListener);
-                    LocationClientOption option = new LocationClientOption();
-                    option.setOpenGps(true);
-                    option.setCoorType("bd09ll");// 返回的定位结果是百度经纬度，默认值gcj02
-                    option.setProdName("BaiduLoc");
-                    option.disableCache(true);// 禁止启用缓存定位
-                    locationClient.setLocOption(option);
+                    try {
+                        String key = args.getString(0);
+                        locationClient = new LocationClient(cordova.getActivity());
+                        locationClient.setAK(key);//设置百度的ak
+                        myListener = new MyLocationListener();
+                        locationClient.registerLocationListener(myListener);
+                        LocationClientOption option = new LocationClientOption();
+                        option.setOpenGps(true);
+                        option.setCoorType("bd09ll");// 返回的定位结果是百度经纬度，默认值gcj02
+                        option.setProdName("BaiduLoc");
+                        option.disableCache(true);// 禁止启用缓存定位
+                        locationClient.setLocOption(option);
 
-                    locationClient.start();
-                    locationClient.requestLocation();
+                        locationClient.start();
+                        locationClient.requestLocation();
+                    } catch(Exception e) {
+                        callbackContext.error("Exception:" + e.getMessage());
+                    }
 
                 }
 

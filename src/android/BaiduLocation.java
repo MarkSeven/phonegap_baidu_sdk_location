@@ -28,6 +28,7 @@ public class BaiduLocation extends CordovaPlugin {
 
     public LocationClient locationClient = null;
     public BDLocationListener myListener = null;
+
     public JSONObject jsonObj = new JSONObject();
     public boolean result = false;
     public CallbackContext callbackContext;
@@ -66,16 +67,24 @@ public class BaiduLocation extends CordovaPlugin {
                 public void run() {
                     try {
                         // String key = args.getString(0);
-                        locationClient = new LocationClient(cordova.getActivity());
+                        locationClient = new LocationClient(cordova.getActivity());  //声明Location
                         // locationClient.setAK(key);//设置百度的ak
                         myListener = new MyLocationListener();
-                        locationClient.registerLocationListener(myListener);
+                        locationClient.registerLocationListener(myListener);  //注册监听函数
+
                         LocationClientOption option = new LocationClientOption();
+                        option.setLocationMode(LocationMode.Hight_Accuracy);//设置定位模式
+                        option.setCoorType("bd09ll");//返回的定位结果是百度经纬度,默认值gcj02
+                        option.setScanSpan(5000);//设置发起定位请求的间隔时间为5000ms
+                        option.setIsNeedAddress(true);//返回的定位结果包含地址信息
+                        option.setAddrType("all");
+                        // option.setNeedDeviceDirect(true);//返回的定位结果包含手机机头的方向
+
                         option.setOpenGps(true);
-                        option.setCoorType("bd09ll");// 返回的定位结果是百度经纬度，默认值gcj02
-                        option.setProdName("BaiduLoc");
-                        option.disableCache(true);// 禁止启用缓存定位
+                        option.setProdName("EVE");
+
                         locationClient.setLocOption(option);
+
 
                         locationClient.start();
                         locationClient.requestLocation();

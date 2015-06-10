@@ -74,7 +74,7 @@ public class BaiduLocation extends CordovaPlugin {
 
                         LocationClientOption option = new LocationClientOption();
                         option.setLocationMode(LocationMode.Hight_Accuracy);//设置定位模式
-                        // option.setCoorType("bd09ll");//返回的定位结果是百度经纬度,默认值gcj02
+                        option.setCoorType("bd09ll");//返回的定位结果是百度经纬度,默认值gcj02
                         option.setScanSpan(5000);//设置发起定位请求的间隔时间为5000ms
                         option.setIsNeedAddress(true);//返回的定位结果包含地址信息
                         option.setAddrType("all");
